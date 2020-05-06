@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang = en>
+<head>
+	<meta charset="utf-8">
+	<title>PCA</title>
+	<!-- My Own Stylesheet --->
+	<link rel="stylesheet" href="style.css">
+	<!-- Bootstrap CSS --->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- Optional JavaScript -->
+    	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<!-- Latex -->
+	<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+    <script type="text/x-mathjax-config">
+    	MathJax.Hub.Config({
+        	tex2jax: {
+            	inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+             	processEscapes: true
+           	}
+         });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    		<div class="navbar-nav">
+      			<a class="nav-item nav-link" href="index.html">Home </span></a>
+      			<a class="nav-item nav-link" href="computation.html">Computing SVD</a>
+      			<a class="nav-item nav-link" href="PCA.html">PCA (Principle Component Analysis)</a>
+      			<a class="nav-item nav-link active">Applications</a>
+    		</div>
+  		</div>
+	</nav>
+
+	<header class = "container" id = title>
+		<h3>Applications of SVD</h3>
+		<p>Examples of real-life applications of SVD and PCA</p>
+	</header>
+	<br>
+
+	<section class = "container" id = use>
+		<div class = "row justify-content-center align-items-center">
+			<div class = "col-5" id = left>
+				<img src="https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" width = 90%>
+			</div>
+			<div class = "col-5" id = right>
+				<article>
+					<header>
+						<h4>Unsupervised Machine Learning</h4>
+					</header>
+					<p>SVD is widely used in many unsupervised machine learning algorithm techniques. It is used for building recomendation system as well as face recognition.</p>
+				</article>	
+			</div>
+		</div>
+	</section>
+
+	<section class = "container" id = use>
+		<div class = "row justify-content-center align-items-center">
+			<div class = "col-5" id = left>
+				<img src="https://upload.wikimedia.org/wikipedia/en/4/4a/ParCorFisherIris.png" width = 95%>
+			</div>
+			<div class = "col-5" id = right>
+				<article>
+					<header>
+						<h4>Dimensionality Reduction</h4>
+					</header>
+					<p>Visualizing the structure and pattern that exists within the high-dimensional data can be challenging. PCA can help project the high-dimensional data onto a plane in 3D or 2D, thus enabling one to visualize the data better.</p>					
+				</article>	
+			</div>
+		</div>
+	</section>
+
+		<section class = "container" id = use>
+		<div class = "row justify-content-center align-items-centers">
+			<div class = "col-5" id = left>
+				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Quality_comparison_jpg_vs_saveforweb.jpg/800px-Quality_comparison_jpg_vs_saveforweb.jpg" width = 85%>
+			</div>
+			<div class = "col-5" id = right>
+				<article>
+					<header>
+						<h4>Image Compression and Signal Processing</h4>
+					</header>
+					<p>SVD can sucessfully compress image into smaller size by applying SVD to the pixel matrix. In doing so, one can obtain the principle components of the matirx. Picking only a subset of all the principle components can reduce the size of the image while minimizing the possible loss of information from image compression</p>
+				</article>
+				
+			</div>
+		</div>
+	</section>
+	<br>
+
+	<section class = "container" id = content>
+		<article>
+			<p>Forget about the theories behind SVD and PCA? Click on the following links below to review</p>
+		</article>
+	</section>
+
+
+	<nav class = container id = nav-bar>
+		<ul class ="nav justify-content-center">
+			<li class = "nav-item">
+				<a class = "nav-link" href="index.html">What is SVD</a>
+			</li>
+			<li class = "nav-item">
+				<a class = "nav-link" href="computation.html">Computing SVD</a>
+			</li>
+			<li class = "nav-item">
+				<a class = "nav-link" href="PCA.html">PCA (Principle Component Analysis)</a>
+			</li>
+		</ul>
+	</nav>
+
+	<!-- Footer -->
+	<footer class="card bg-light mb-3">
+  		<div class="footer-copyright text-center py-3">
+  			<span>
+  				This website is made by Peter Zhao:
+  			</span>
+  			<span>
+  				License: CC BY-SA 3.0
+  			</span>	
+  		</div>
+	</footer>
+	
+</body>
+</html>

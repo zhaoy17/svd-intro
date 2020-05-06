@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang = en>
+<head>
+	<meta charset="utf-8">
+	<title>Computing SVD</title>
+	<!-- My Own Stylesheet --->
+	<link rel="stylesheet" href="style.css">
+	<!-- Bootstrap CSS --->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<!-- Latex -->
+	<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+       <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({
+           tex2jax: {
+             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+             processEscapes: true
+           }
+         });
+       </script>
+       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+	</script>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    		<div class="navbar-nav">
+      			<a class="nav-item nav-link" href="index.html">Home </span></a>
+      			<a class="nav-item nav-link active" href="computation.html">Computing SVD</a>
+      			<a class="nav-item nav-link" href="PCA.html">PCA (Principle Component Analysis)</a>
+      			<a class="nav-item nav-link" href="Application.html">Applications</a>
+    		</div>
+  		</div>
+	</nav>
+
+	<header class = "container" id = title>
+		<h3>How to Compute SVD</h3>
+		<p>Here are the steps one can follow to easily compute the singular value decomposition of an arbitrary matrix</p>
+	</header>
+
+	<div class = container>
+		<div class = "row justify-content-center">
+			<div class = "col-5">
+				<figure class = "figure">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Singular_value_decomposition.gif" width = 78%>
+					<figcaption>Visualization of SVD on a 2 by 2 matrix</figcaption>	
+				</figure>
+			</div>
+
+			<div class = "col-5">
+				<figure class = "figure">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Singular_value_decomposition_visualisation.svg/800px-Singular_value_decomposition_visualisation.svg.png" width = 58%>
+					<figcaption>SVD of an arbitrary matrix</figcaption>
+				</figure>
+			</div>
+		</div>	
+	</div>
+	
+
+	<section class = "container", id = content>
+		<header>
+			<h5>SVD's definition</h5>
+		</header>
+		<article>
+			<p> Recall that Singular Value Decomposition (SVD) is a factorization of a real or complex matrix. It essentially decomposes a m $\times$ n matrix M into three matrics: $U$, $\Sigma$, and $V$, such that $M = U \Sigma V$, where $U$ is a $m \times m$ real or complex unitary matrix $(UU^T = I)$, $\Sigma$ is an $n \times n$ diagonal matrix, whose diagonal entries $\sigma_i$ are known as the singular value of the matrix M, and V is a $n \times n$ unitary matrix $(NN^T = I)$.</p>
+		</article>
+	</section>
+
+	<section class = "container" id = content>
+		<header>
+			<h5>The Singular Values of a Matrix</h5>
+		</header>
+		<article>
+			<p> Our goal is to decompose a m by n matrix $M$ into the product of three matrics, namely $U \Sigma V$. We first need to introduce the notion of singular values. A matrix's singular values is quite similar to the eigenvalues of a matrix, except that not every single matrices have eigenvalues and eigenvectors. However, every single matrics have its own singular values (proof ommited). Furthermore, we can also prove that every single matrix has a unique singular value decomposition. This means that for every abritrary matrix, we are able to compute its singular value decomposition.</p>
+			<p>By definition, the singular values of an arbitrary matrix A are the absolute values of the eigenvalues of $AA^T$, which is guaranteed to be a normal matrix. We know that $\Sigma$ is a diagonal matrix, whose diagonal entries $\sigma_i$ are the singular values of the matrix A. Once we obtained $\sigma_i$, we can easily construct $\Sigma$ based on that.</p>
+			</article>
+	</section>
+
+	<section class = "container" id = content>
+		<header>
+			<h5>Computing U and V</h5>
+		</header>
+		<article>
+			<p>U and V can be easily obtained once we have constructed $\Sigma$. U is the left-singular vectors of A, which is the set of orthonormal eigenvectors of $AA^T$. In contrast, V is the right-singular vectors of A, which is the set of orthonormal eigenvectors of $M^TM$. If you are familiar with the process of obtaining eigenvector and eigenvalues, this should not be very difficult to do.</p>
+			<p>Now that you know how to compute SVD, we can delve further into other aspects of SVD. Click on the following links to learn more about it. </p>
+			</article>
+	</section>
+
+
+	<nav class = container id = nav-bar>
+		<ul class ="nav justify-content-center">
+			<li class = "nav-item">
+				<a class = "nav-link active" href="index.html">What is SVD</a>
+			</li>
+			<li class = "nav-item">
+				<a class = "nav-link" href="PCA.html">PCA (Principle Component Analysis)</a>
+			</li>
+			<li class = "nav-item">
+				<a class = "nav-link" href = Application.html>Applications</a>
+			</li>
+		</ul>
+	</nav>
+
+		<!-- Footer -->
+	<footer class="card bg-light mb-3">
+  		<div class="footer-copyright text-center py-3">
+  			<span>This website is made by Peter Zhao:</span>
+  			<span>License: CC BY-SA 3.0</span>	
+  		</div>
+	</footer>
+	
+</body>
+</html>

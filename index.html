@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang = en>
+<head>
+	<meta charset="utf-8">
+	<title>A brief introduction to SVD (Singular Value Decomposition)</title>
+	<!-- My Own Stylesheet --->
+	<link rel="stylesheet" href="style.css">
+	<!-- Bootstrap CSS --->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<!-- Latex -->
+	<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+       <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({
+           tex2jax: {
+             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+             processEscapes: true
+           }
+         });
+       </script>
+       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    		<div class="navbar-nav">
+      			<a class="nav-item nav-link active" href="index.html">Home </span></a>
+      			<a class="nav-item nav-link" href="computation.html">Computing SVD</a>
+      			<a class="nav-item nav-link" href=PCA.html>PCA (Principle Component Analysis)</a>
+      			<a class="nav-item nav-link" href="Application.html">Applications</a>
+    		</div>
+  		</div>
+	</nav>
+
+	<header class = "container" id = title>
+		<h3>A Brief Introduction to SVD (Singular Value Decomposition)</h3>
+		<p>Using SVD to deal with high-dimensional data</p>
+	</header>
+
+
+
+	<div id = picture>
+		<img src=background.jpg class="img-fluid" alt="Responsive image" width = 100%>
+		<div id = caption>
+		"Photo by Thom Holmes on Unsplash"
+		</div>
+	</div>
+
+	<section class = "container">
+		<header>
+			<h5>What is SVD</h5>
+		</header>
+		<article>
+			<p> Singular Value Decomposition (SVD) is a factorization of a real or complex matrix. It essentially decomposes a m $\times$ n matrix M into three matrics: $U$, $\Sigma$, and $V$, such that $M = U \Sigma V$, where $U$ is a $m \times m$ real or complex unitary matrix $(UU^T = I)$, $\Sigma$ is an $n \times n$ diagonal matrix, whose diagonal entries $\sigma_i$ are known as the singular value of the matrix M, and V is a $n \times n$ unitary matrix $(NN^T = I)$. SVD is widely used in areas such as Image Processing and Machine Learning. To learn more about SVD, click on the following links below.</p>
+		</article>
+	</section>
+
+	<nav class = container id = nav-bar>
+		<ul class ="nav justify-content-center">
+			<li class = "nav-item">
+				<a class = "nav-link active" href=computation.html>Computing SVD</a>
+			</li>
+			<li class = "nav-item">
+				<a class = "nav-link" href=PCA.html>PCA (Principle Component Analysis)</a>
+			</li>
+			<li class = "nav-item">
+				<a class = "nav-link" href=Application.html>Applications</a>
+			</li>
+		</ul>
+	</nav>
+
+	<!-- Footer -->
+	<footer class="card bg-light mb-3">
+  		<div class="footer-copyright text-center py-3">
+  			<span>
+  				This website is made by Peter Zhao:
+  			</span>
+  			<span>
+  				License: CC BY-SA 3.0
+  			</span>	
+  		</div>
+	</footer>
+
+</body>
+</html>

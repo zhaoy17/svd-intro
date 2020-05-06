@@ -1,0 +1,91 @@
+header#title > h3{
+	font-family: Didot, serif; 
+	text-align: center;
+	font-size: 2em;
+	margin-top: 20px;
+	font-weight: bold;
+}
+
+header#title > p{
+	font-size: 1em;
+	font-family: Georgia, serif
+}
+
+#topnav{
+	margin-bottom:20px;
+	font-size: 0.95em;
+}
+
+
+#caption{
+	font-weight:lighter;
+	font-size: 0.86em;
+}
+
+article > p, li{
+	font-family: Bookman, URW Bookman L, serif;
+}
+
+header{
+	font-family: Didot, serif; 
+	text-align: center;
+	margin-bottom: 16px;
+}
+
+.navbar .navbar-collapse {
+	text-align: center;
+}
+
+section#content header{
+	text-align: left;
+	margin-top: 50px;
+}
+
+section#content h5{
+	text-align: left;
+	margin-top: 50px;
+	font-weight: bold;
+}
+
+section#use header, h4{
+	text-align: left;
+	font-weight: bold;
+}
+
+#left{
+	text-align:right;
+}
+
+#right{
+	text-align:left;
+}
+
+#table{
+	font-family: Bookman, URW Bookman L, serif;
+	font-size: 0.9em;
+}
+
+#picture{
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 40px;
+	padding: 0px;
+	text-align: center
+}
+
+#use{
+	margin-bottom: 38px;
+	margin-top: 20px;
+}
+
+footer.mb-3, .my-3{
+	margin-top: 20px;
+	margin-bottom: 0px!important;
+	font-family: Bookman, URW Bookman L, serif;
+}
+
+footer span{
+	margin-right: 1px;
+	margin-left: 1px;
+	font-size: 0.9em;
+}

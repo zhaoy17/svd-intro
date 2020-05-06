@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang = en>
+<head>
+	<meta charset="utf-8">
+	<title>PCA</title>
+	<!-- My Own Stylesheet --->
+	<link rel="stylesheet" href="style.css">
+	<!-- Bootstrap CSS --->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<!-- Latex -->
+	<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+       <script type="text/x-mathjax-config">
+         MathJax.Hub.Config({
+           tex2jax: {
+             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+             processEscapes: true
+           }
+         });
+       </script>
+       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+	</script>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    		<div class="navbar-nav">
+      			<a class="nav-item nav-link" href="index.html">Home </span></a>
+      			<a class="nav-item nav-link" href="computation.html">Computing SVD</a>
+      			<a class="nav-item nav-link active" href="PCA.html">PCA (Principle Component Analysis)</a>
+      			<a class="nav-item nav-link" href="Application.html">Applications</a>
+    		</div>
+  		</div>
+	</nav>
+
+	<header class = "container" id = title>
+		<h3>PCA (Principal Components Analysis)</h3>
+		<p>Converting a set of possibly correlated obervations into linear uncorrelated variables</p>
+	</header>
+
+	<div class = container>
+		<div class = "row justify-content-center">
+			<div class = "col-5">
+				<figure class = "figure">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/GaussianScatterPCA.svg/800px-GaussianScatterPCA.svg.png" width = 70%>
+					<figcaption>PCA of a multivariate Gaussian distribution</figcaption>	
+				</figure>
+
+			</div>
+
+			<div class = "col-5">
+				<figure class = "figure">
+					<img src=https://upload.wikimedia.org/wikipedia/commons/6/69/PCA_of_Haplogroup_J_using_37_STRs.png width = 83%>
+					<figcaption>An application of PCA in data analysis</figcaption>
+				</figure>
+			</div>
+		</div>	
+	</div>
+	
+
+	<section class = "container", id = content>
+		<header>
+			<h5>Data Matrix</h5>
+		</header>
+		<article>
+			<p>
+				Multivariate data can be represented as a two-dimensional matrix. Each column of the matrix represents a feature (also known as the independent variables). The last column represents the explaintory feature (also known as the dependent variable). Each row of the matrix can be seen as an individual subject, whose measurement were recorded in each entry of the matrix. For instance, let's say that we have some measurements about different iris. We can turn those data into a table.
+			</p>
+			<br>
+			<table class="table table-striped" id = table>
+				<thead>
+					<tr>
+						<td>Sepal length (cm)</td>
+						<td>Sepal width  (cm)</td>
+						<td>Petal length (cm)</td>
+						<td>Petal width  (cm)</td>
+						<td>Class (Iris Setosa, Iris Versicolour, Iris Virginica)</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>5.1</td>
+						<td>3.5</td>
+						<td>1.4</td>
+						<td>0.2</td>
+						<td>Iris setosa</td>
+					</tr>
+					<tr>
+						<td>4.9</td>
+						<td>3.0</td>
+						<td>1.4</td>
+						<td>0.2</td>
+						<td>Iris setosa</td>
+					</tr>
+					<tr>
+						<td>7.0</td>
+						<td>3.2</td>
+						<td>4.7</td>
+						<td>1.4</td>
+						<td>Iris versicolor</td>
+					</tr>
+					<tr>
+						<td>6.4</td>
+						<td>3.2</td>
+						<td>4.5</td>
+						<td>1.5</td>
+						<td>Iris versicolor</td>
+					</tr>
+					<tr>
+						<td>6.3</td>
+						<td>3.3</td>
+						<td>6.0</td>
+						<td>2.5</td>
+						<td>Iris virginica</td>
+					</tr>
+					<tr>
+						<td>5.8</td>
+						<td>2.7</td>
+						<td>5.1</td>
+						<td>1.9</td>
+						<td>Iris virginica</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>We can turn this dataset into a 6 by 5 matrix:</p>
+			<br>
+			<div>
+				<img src="http://latex.codecogs.com/svg.latex?\begin{pmatrix} 5.1 & 3.5 & 1.4 &0.2 & 0 \\ 4.9 & 3.0 & 1.4 & 0.2 & 0\\ 7.0 & 3.2 & 4.7 & 1.4 & 1 \\ 6.4 & 3.2 & 4.5 & 1.5 & 1 \\ 6.3 & 3.3 & 6.0 & 2.5 & 2 \\ 5.8 & 2.7 & 5.1 & 1.9 & 2 \end{pmatrix}" border="0"/>
+			</div>
+			<br>
+			<p>We have encoded the categorical variable into distinct integer, where 0 represents the Iris setosa, 1 represents the Iris versicolor, and 2 represents the Iris virginica. So from the matrix, each row represents a single iris. Each column represents a single feature (sepal length, sepal width, petal length, petal width). The last column represents the type of iris. Hopefully we can discover some pattern between the independent variables and the dependent variables.</p>
+
+		</article>
+	</section>
+
+	<section class = "container" id = content>
+		<header>
+			<h5>Multicollinearity Problem</h5>
+		</header>
+		<article>
+			<p> 
+				One common problem with the data we often encounter is the fact that one feature (independent variable) can be linearly predicted from another feature(independent variable) with a substantial degree of accuracy. This can be problematic for the following reasons:
+				<ol>
+					<li>If one feature has a perfect linear relationship with another variable, computer algorithm may not be able to obtain an approximate inverse when it tries to calculate ordinary least square regression (OLS Regression).</li>
+					<li>Another danger of multicolinearity problem is that redundancy in data can easily lead to overfitting in regression analysis model. Having more features than necessary makes the model more complicated than it should be. It introduces noise and makes the model prone to overfitting</li>
+				</ol>
+			</p>
+			</article>
+	</section>
+
+	<section class = "container" id = content>
+		<header>
+			<h5>Addressing Multicolinearity Problem through PCA</h5>
+		</header>
+		<article>
+			<p>
+				Essentially PCA transforms the data to a new coordinate system through orthogonal linear transformation such that the matrix first column explains the greatest variance of the data. Furthermore, since the set of vectors that make up of the matrix is orthonormal, it means that there is no correlation between each feature. This is because the dot product between any of the two vectors in the matrix is 0 by the definition of orthonormal set. Therefore, multicolinearity problem has been resolved
+			</p>
+			<p>
+				Aside from resolving multicolinearity problem, PCA is very useful for dimensionality reduction, which is the process of turning multi-dimensional data into two-dimensional/three-dimensional data as we can use only the first two, or the first three principal component axis. Since we know that PCA identifies axis that explains the most amount of variance of the data, we won't lose much information from only selecting 2 or 3 of the features. This also helps for data visualization as we can plot the data points and identify the structure of the data. 
+			</p>
+			</article>
+	</section>
+
+	<section class = "container" id = content>
+		<header>
+			<h5>PCA and SVD</h5>
+		</header>
+		<article>
+			<p>
+				PCA can be obtained through SVD as we know SVD also decomposes the matrix into the product of matrics consist of a set of orthonormal vectors. If we perform a SVD on the matrix M, resulting in $M = U \Sigma V.$ The columns of $U \Sigma$ (or $SV$) are the principal components of the original matrix. The data matrix needed to be standardized before one can perform PCA on the matrix.
+			</p>
+			<p>
+				Click the links below if you want to learn even more about SVD
+			</p>
+		</article>
+		
+	</section>
+
+
+	<nav class = container id = nav-bar>
+		<ul class ="nav justify-content-center">
+			<li class = "nav-item">
+				<a class = "nav-link" href="index.html">What is SVD</a>
+			</li>
+			<li class = "nav-item">
+				<a class = "nav-link" href="computation.html">Computing SVD</a>
+			</li>
+			<li class = "nav-item">
+				<a class = "nav-link" href=Application.html>Applications</a>
+			</li>
+		</ul>
+	</nav>
+
+	<!-- Footer -->
+	<footer class="card bg-light mb-3">
+  		<div class="footer-copyright text-center py-3">
+  			<span>
+  				This website is made by Peter Zhao:
+  			</span>
+  			<span>
+  				License: CC BY-SA 3.0
+  			</span>	
+  		</div>
+	</footer>
+</body>
+</html>
