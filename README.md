@@ -12,4 +12,4 @@ PCA: Relating SVD with PCA (Principal Component Analysis)
 
 Applications: Talk about where SVD is used in real life
 
-The website's URL is: https://zhaoy17.github.io/CS50-Web-Programming-Projects/project0/
+The website's URL is: https://zhaoy17.github.io/SVD-Introduction/
